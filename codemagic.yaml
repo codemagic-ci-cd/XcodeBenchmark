@@ -56,3 +56,12 @@ workflows:
     scripts:
       - *machineSpecs
       - *runBenchmarkTests
+  ios-m2-max-studio-workflow:
+    name: iOS M2 Max Studio Workflow
+    environment:
+      xcode: 16.2
+    triggering:
+      <<: *push_event
+    scripts:
+      - *machineSpecs
+      - *runBenchmarkTests
