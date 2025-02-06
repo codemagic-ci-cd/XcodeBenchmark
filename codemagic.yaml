@@ -18,11 +18,10 @@ definitions:
       script: |
         echo "Machine: $(sysctl -n machdep.cpu.brand_string)"
         echo "CPU cores: $(sysctl -n hw.physicalcpu) physical / $(sysctl -n hw.logicalcpu) logical"
-        echo "GPU cores: $(system_profiler SPDisplaysDataType -json | jq -r '."SPDisplaysDataType"[0].sppci_cores')"
         echo "RAM: $(($(sysctl -n hw.memsize) / 1024 / 1024 / 1024)) GB"
 workflows:
   ios-m1-mac-mini-workflow:
-    name: iOS M1 Mac Mini Workflow
+    name: iOS M1 Mac mini Workflow
     # instance_type: mac_mini_m1
     environment:
       <<: *env_versions
@@ -31,7 +30,7 @@ workflows:
     scripts:
       - *runBenchmarkTests
   ios-m2-mac-mini-workflow:
-    name: iOS M2 Mac Mini Workflow
+    name: iOS M2 Mac mini Workflow
     instance_type: mac_mini_m2
     environment:
       <<: *env_versions
@@ -40,7 +39,7 @@ workflows:
     scripts:
       - *runBenchmarkTests
   ios-m4-mac-mini-workflow:
-    name: iOS M4 Mac Mini Workflow
+    name: iOS M4 Pro Mac mini Workflow
     environment:
       <<: *env_versions
     triggering:
