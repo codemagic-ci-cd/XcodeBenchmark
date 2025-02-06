@@ -59,7 +59,7 @@ workflows:
   ios-m2-max-studio-workflow:
     name: iOS M2 Max Studio Workflow
     environment:
-      xcode: 16.1
+      xcode: 15.4
     triggering:
       <<: *push_event
     scripts:
