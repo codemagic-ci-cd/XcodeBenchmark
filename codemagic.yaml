@@ -39,6 +39,15 @@ workflows:
     scripts:
       - *runBenchmarkTests
   ios-m4-mac-mini-workflow:
+    name: iOS M4 Mac mini Workflow
+    environment:
+      <<: *env_versions
+    triggering:
+      <<: *push_event
+    scripts:
+      - *machineSpecs
+      - *runBenchmarkTests
+  ios-m4-pro-mac-mini-workflow:
     name: iOS M4 Pro Mac mini Workflow
     environment:
       <<: *env_versions
