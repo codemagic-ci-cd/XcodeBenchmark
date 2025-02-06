@@ -13,6 +13,13 @@ definitions:
     - &runBenchmarkTests
       name: Run benchmark tests
       script: sh benchmark.sh
+    - &machineSpecs
+      name: Machine Specs
+      script: |
+        echo "Machine: $(sysctl -n machdep.cpu.brand_string)"
+        echo "CPU cores: $(sysctl -n hw.physicalcpu) physical / $(sysctl -n hw.logicalcpu) logical"
+        echo "GPU cores: $(system_profiler SPDisplaysDataType -json | jq -r '."SPDisplaysDataType"[0].sppci_cores')"
+        echo "RAM: $(($(sysctl -n hw.memsize) / 1024 / 1024 / 1024)) GB"
 workflows:
   ios-m1-mac-mini-workflow:
     name: iOS M1 Mac Mini Workflow
@@ -39,4 +46,5 @@ workflows:
     triggering:
       <<: *push_event
     scripts:
+      - *machineSpecs
       - *runBenchmarkTests
