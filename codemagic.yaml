@@ -41,7 +41,7 @@ workflows:
   ios-m4-mac-mini-workflow:
     name: iOS M4 Mac mini Workflow
     environment:
-      <<: *env_versions
+      xcode: 16.2
     triggering:
       <<: *push_event
     scripts:
